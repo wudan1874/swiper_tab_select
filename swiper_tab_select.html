@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>swiper</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+/* tabq切换*/
+@media screen and (max-width: 768px){
+    .swiper-container{
+        height:100px;
+    }
+    .swiper-slide{
+        height:100px;
+    }
+    .content-slide{
+        padding:5px 10px;
+    }
+}
+@media screen and (min-width: 769px){
+    .swiper-container{
+        height:250px;
+    }
+    .swiper-slide{
+        height:250px;
+    }
+    .content-slide{
+        padding:10px;
+    }
+
+}
+.wrap
+{
+    margin:20px auto 0 auto;
+}
+.tabs
+{
+    height: 40px;
+}
+.tabs a
+{
+    font-size: 16px;
+    line-height: 40px;
+
+    display: block;
+    float: left;
+
+    width:25%;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: #333;
+    background: #eee;
+    // background-color:#f8f8f8;
+}
+.tabs a.active
+{
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    background: #333;
+}
+.swiper-container
+{
+    width: 100%;
+    border-top: 0;
+    border-radius: 0 0 5px 5px;
+    background: #333;
+}
+.swiper-slide
+{
+    width: 100%;
+    color: #fff;
+    background: none;
+}
+
+.content-slide p
+{
+    line-height: 1.9;
+
+    text-indent: 2em;
+}
+.swiper-container
+{
+    position: relative;
+    z-index: 1;
+
+    overflow: hidden;
+    overflow: scroll;
+    margin: 0 auto;
+
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+         -o-backface-visibility: hidden;
+            backface-visibility: hidden;/* Fix of Webkit flickering */
+}
+.swiper-wrapper
+{
+    position: relative;
+
+    -webkit-box-sizing: content-box;
+       -moz-box-sizing: content-box;
+            box-sizing: content-box;
+    width: 100%;
+
+    -webkit-transition-timing-function: ease;
+       -moz-transition-timing-function: ease;
+        -ms-transition-timing-function: ease;
+         -o-transition-timing-function: ease;
+            transition-timing-function: ease;
+    -webkit-transition-duration: 0s;
+       -moz-transition-duration: 0s;
+        -ms-transition-duration: 0s;
+         -o-transition-duration: 0s;
+            transition-duration: 0s;
+    -webkit-transition-property: -webkit-transform, left, top;
+       -moz-transition-property:    -moz-transform, left, top;
+        -ms-transition-property:     -ms-transform, left, top;
+         -o-transition-property:      -o-transform, left, top;
+            transition-property:         transform, left, top;
+    -webkit-transform: translate3d(0px,0,0);
+       -moz-transform: translate3d(0px,0,0);
+        -ms-transform: translate3d(0px,0,0);
+         -o-transform: translate3d(0px,0,0);
+         -o-transform: translate(0px,0px);
+            transform: translate3d(0px,0,0);
+}
+.swiper-free-mode > .swiper-wrapper
+{
+    margin: 0 auto;
+
+    -webkit-transition-timing-function: ease-out;
+       -moz-transition-timing-function: ease-out;
+        -ms-transition-timing-function: ease-out;
+         -o-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+}
+.swiper-slide
+{
+    float: left;
+
+    -webkit-box-sizing: content-box;
+       -moz-box-sizing: content-box;
+            box-sizing: content-box;
+}
+</style>
+</head>
+<body>
+	<div class="wrap" style="margin-top: 10px;">
+    <div class="tabs">
+        <a href="#" hidefocus="true" class="active">直播简介</a>
+        <a href="#" hidefocus="true">产品图片</a>
+        <a href="#" hidefocus="true">预留位置</a>
+        <a href="#" hidefocus="true">预留位置2</a>
+    </div>    
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+             <div class="content-slide">
+                这是一个直播,这是一个直播,这是一个直播,这是一个直播,这是一个直播,这是一个直播,这是一个直播,这是一个直播
+            </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="content-slide">
+               此处放置图片
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="content-slide">
+               预留
+              </div>
+          </div>
+          <div class="swiper-slide">
+              <div class="content-slide">
+               预留2
+              </div>
+          </div>
+      </div>
+   </div>
+</div>
+<script src="http://www.lanrenzhijia.com/ajaxjs/jquery-1.10.1.min.js"></script> 
+<script src="http://www.lanrenzhijia.com/ajaxjs/idangerous.swiper.min.js"></script>
+<script>
+var tabsSwiper = new Swiper('.swiper-container',{
+    speed:500,
+    onSlideChangeStart: function(){
+        $(".tabs .active").removeClass('active');
+        $(".tabs a").eq(tabsSwiper.activeIndex).addClass('active');
+    }
+});
+
+$(".tabs a").on('touchstart mousedown',function(e){
+    e.preventDefault()
+    $(".tabs .active").removeClass('active');
+    $(this).addClass('active');
+    tabsSwiper.swipeTo($(this).index());
+});
+
+$(".tabs a").click(function(e){
+    e.preventDefault();
+});
+</script>
+</body>
+</html>
